@@ -50,7 +50,7 @@ interface ArtworkRect {
 
 export function BattleArtwork({ game, selected, onAbilityPress, onEndTurnPress, onTilePress }: BattleArtworkProps) {
   const [layout, setLayout] = useState<LayoutSize>();
-  const imageFrame = useMemo(() => (layout ? getCoverFrame(layout) : undefined), [layout]);
+  const imageFrame = useMemo(() => (layout ? getContainFrame(layout) : undefined), [layout]);
 
   function handleLayout(event: LayoutChangeEvent) {
     setLayout({
@@ -61,7 +61,7 @@ export function BattleArtwork({ game, selected, onAbilityPress, onEndTurnPress, 
 
   return (
     <View style={styles.container} onLayout={handleLayout}>
-      <ImageBackground source={emptyBattleArtwork} resizeMode="cover" style={styles.artwork} />
+      <ImageBackground source={emptyBattleArtwork} resizeMode="contain" style={styles.artwork} />
       {imageFrame ? (
         <>
           {game.board.map((tile) => (
@@ -83,8 +83,8 @@ export function BattleArtwork({ game, selected, onAbilityPress, onEndTurnPress, 
   );
 }
 
-function getCoverFrame(layout: LayoutSize) {
-  const scale = Math.max(layout.width / ARTWORK_WIDTH, layout.height / ARTWORK_HEIGHT);
+function getContainFrame(layout: LayoutSize) {
+  const scale = Math.min(layout.width / ARTWORK_WIDTH, layout.height / ARTWORK_HEIGHT);
   const width = ARTWORK_WIDTH * scale;
   const height = ARTWORK_HEIGHT * scale;
 
@@ -95,7 +95,7 @@ function getCoverFrame(layout: LayoutSize) {
   };
 }
 
-function getMappedStyle(rect: ArtworkRect, imageFrame: ReturnType<typeof getCoverFrame>) {
+function getMappedStyle(rect: ArtworkRect, imageFrame: ReturnType<typeof getContainFrame>) {
   return {
     left: imageFrame.left + rect.x * imageFrame.scale,
     top: imageFrame.top + rect.y * imageFrame.scale,
@@ -104,7 +104,7 @@ function getMappedStyle(rect: ArtworkRect, imageFrame: ReturnType<typeof getCove
   };
 }
 
-function getTileStyle(position: Position, imageFrame: ReturnType<typeof getCoverFrame>) {
+function getTileStyle(position: Position, imageFrame: ReturnType<typeof getContainFrame>) {
   const cellWidth = BOARD_RECT.width / 6;
   const cellHeight = BOARD_RECT.height / 6;
 
