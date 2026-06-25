@@ -4,6 +4,7 @@
   "private": true,
   "main": "index.ts",
   "scripts": {
+    "dev:mobile": "expo start",
     "start": "expo start",
     "android": "expo run:android",
     "ios": "expo run:ios",
@@ -26,4 +27,3 @@
     "typescript": "~6.0.3"
   }
 }
-
