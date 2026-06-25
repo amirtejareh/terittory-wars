@@ -6,8 +6,10 @@
   "main": "./dist/local.js",
   "types": "./dist/app.d.ts",
   "scripts": {
+    "prebuild": "npm --workspace @territory-wars/game-engine run build",
     "build": "tsc -p tsconfig.json",
     "dev": "npm run build && node dist/local.js",
+    "pretypecheck": "npm --workspace @territory-wars/game-engine run build",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "test": "vitest run"
   },
@@ -19,4 +21,3 @@
     "vitest": "^4.1.9"
   }
 }
-

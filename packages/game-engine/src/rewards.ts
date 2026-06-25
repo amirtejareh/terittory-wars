@@ -1,9 +1,9 @@
 import type { PlayerId } from "./types.js";
 
 export interface RewardInput {
-  readonly winner?: PlayerId;
+  readonly winner?: PlayerId | undefined;
   readonly player: PlayerId;
-  readonly firstWinOfDay?: boolean;
+  readonly firstWinOfDay?: boolean | undefined;
 }
 
 export interface MatchReward {

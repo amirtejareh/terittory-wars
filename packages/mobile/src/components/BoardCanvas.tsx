@@ -4,7 +4,7 @@ import { StyleSheet, View, Pressable, useWindowDimensions } from "react-native";
 
 interface BoardCanvasProps {
   readonly tiles: readonly Tile[];
-  readonly selected?: Position;
+  readonly selected?: Position | undefined;
   readonly onTilePress: (position: Position) => void;
 }
 
@@ -74,10 +74,18 @@ const styles = StyleSheet.create({
     overflow: "hidden"
   },
   canvas: {
-    ...StyleSheet.absoluteFillObject
+    position: "absolute",
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0
   },
   touchGrid: {
-    ...StyleSheet.absoluteFillObject,
+    position: "absolute",
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0,
     flexDirection: "row",
     flexWrap: "wrap"
   }

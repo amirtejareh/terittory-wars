@@ -12,14 +12,13 @@ jobs:
       - uses: actions/setup-node@v5
         with:
           node-version: 22.13.1
+          cache: npm
+          cache-dependency-path: package-lock.json
       - name: Install
-        working-directory: territory-wars
-        run: npm install
+        run: npm ci
       - name: Deploy preview
-        working-directory: territory-wars
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
         run: npx vercel deploy --token "$VERCEL_TOKEN"
-

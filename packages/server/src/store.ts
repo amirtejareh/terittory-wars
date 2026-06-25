@@ -12,7 +12,7 @@ export interface UserRecord {
 
 export interface PaymentRecord {
   readonly telegramPaymentChargeId: string;
-  readonly providerPaymentChargeId?: string;
+  readonly providerPaymentChargeId?: string | undefined;
   readonly telegramId: string;
   readonly itemId: string;
   readonly stars: number;

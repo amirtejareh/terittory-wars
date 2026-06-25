@@ -4,7 +4,7 @@ import type { Position, Tile, TileType } from "@territory-wars/game-engine";
 
 interface PixiBoardProps {
   readonly tiles: readonly Tile[];
-  readonly selected?: Position;
+  readonly selected?: Position | undefined;
   readonly onTilePress: (position: Position) => void;
 }
 
@@ -103,4 +103,3 @@ function drawBoard(app: Application, tiles: readonly Tile[], selected: Position 
     board.addChild(graphics);
   }
 }
-

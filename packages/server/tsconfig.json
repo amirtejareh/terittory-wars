@@ -5,11 +5,7 @@
     "declarationMap": true,
     "outDir": "dist",
     "rootDir": "src",
-    "types": ["node"],
-    "baseUrl": ".",
-    "paths": {
-      "@territory-wars/game-engine": ["../game-engine/src/index.ts"]
-    }
+    "types": ["node"]
   },
   "include": ["src/**/*.ts"]
 }
