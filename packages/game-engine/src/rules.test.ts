@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { applyAction, createInitialGame, evaluateWinner, getValidCaptureActions } from "./rules.js";
+import { applyAction, createInitialGame, evaluateWinner, getValidCaptureActions } from "./rules.ts";
 
 describe("Territory Wars rules", () => {
   it("creates a 6x6 board with one castle per player", () => {

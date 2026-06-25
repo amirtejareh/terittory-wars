@@ -1,5 +1,5 @@
-import { BOARD_SIZE, CASTLE_HP } from "./constants.js";
-import type { Owner, PlayerId, Position, Tile, TileType } from "./types.js";
+import { BOARD_SIZE, CASTLE_HP } from "./constants.ts";
+import type { Owner, PlayerId, Position, Tile, TileType } from "./types.ts";
 
 const layout: readonly (readonly TileType[])[] = [
   ["castle", "mountain", "plain", "forest", "mountain", "castle"],

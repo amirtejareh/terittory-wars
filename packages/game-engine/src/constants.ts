@@ -1,4 +1,4 @@
-import type { HeroDefinition, HeroId, PlayerId, TileType } from "./types.js";
+import type { HeroDefinition, HeroId, PlayerId, TileType } from "./types.ts";
 
 export const BOARD_SIZE = 6;
 export const TURN_SECONDS = 20;

@@ -4,9 +4,9 @@
     "composite": true,
     "declaration": true,
     "declarationMap": true,
+    "rewriteRelativeImportExtensions": true,
     "outDir": "dist",
     "rootDir": "src"
   },
-  "include": ["src/**/*.ts"],
-  "exclude": ["src/**/*.native.ts"]
+  "include": ["src/**/*.ts"]
 }

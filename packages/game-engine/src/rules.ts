@@ -8,7 +8,7 @@ import {
   TILE_CAPTURE_COST,
   TILE_DEFENSE,
   TURN_SECONDS
-} from "./constants.js";
+} from "./constants.ts";
 import {
   areAdjacent,
   countAdjacentOwned,
@@ -19,7 +19,7 @@ import {
   getOpponent,
   getTile,
   replaceTile
-} from "./board.js";
+} from "./board.ts";
 import type {
   CaptureAction,
   GameAction,
@@ -32,7 +32,7 @@ import type {
   Position,
   Tile,
   WinnerResult
-} from "./types.js";
+} from "./types.ts";
 
 export interface NewGameOptions {
   readonly blueName?: string;

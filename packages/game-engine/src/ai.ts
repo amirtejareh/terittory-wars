@@ -1,7 +1,7 @@
-import { TILE_SCORE } from "./constants.js";
-import { getTile } from "./board.js";
-import { getAttackStrength, getDefenseStrength, getValidCaptureActions } from "./rules.js";
-import type { BotDifficulty, CaptureAction, GameAction, GameState, MoveOption, PlayerId } from "./types.js";
+import { TILE_SCORE } from "./constants.ts";
+import { getTile } from "./board.ts";
+import { getAttackStrength, getDefenseStrength, getValidCaptureActions } from "./rules.ts";
+import type { BotDifficulty, CaptureAction, GameAction, GameState, MoveOption, PlayerId } from "./types.ts";
 
 export function chooseBotAction(state: GameState, player: PlayerId, difficulty: BotDifficulty = "normal"): GameAction {
   const moves = scoreMoves(state, player, difficulty);

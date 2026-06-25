@@ -1,4 +1,4 @@
-import type { PlayerId } from "./types.js";
+import type { PlayerId } from "./types.ts";
 
 export interface RewardInput {
   readonly winner?: PlayerId | undefined;

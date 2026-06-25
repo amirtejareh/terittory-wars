@@ -7,16 +7,16 @@
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
     "ignoreDeprecations": "6.0",
+    "allowImportingTsExtensions": true,
     "baseUrl": ".",
     "paths": {
       "@territory-wars/game-engine": [
-        "../game-engine/src/index.native.ts"
+        "../game-engine/src/index.ts"
       ]
     }
   },
   "include": [
     "**/*.ts",
-    "**/*.tsx",
-    "expo-env.d.ts"
+    "**/*.tsx"
   ]
 }
