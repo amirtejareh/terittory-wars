@@ -1,0 +1,22 @@
+{
+  "name": "@territory-wars/server",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "./dist/local.js",
+  "types": "./dist/app.d.ts",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "dev": "npm run build && node dist/local.js",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@territory-wars/game-engine": "*"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "vitest": "^4.1.9"
+  }
+}
+

@@ -1,0 +1,24 @@
+{
+  "expo": {
+    "name": "Territory Wars",
+    "slug": "territory-wars",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "scheme": "territorywars",
+    "userInterfaceStyle": "dark",
+    "newArchEnabled": true,
+    "assetBundlePatterns": ["assets/**/*"],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.territorywars.mobile"
+    },
+    "android": {
+      "package": "com.territorywars.mobile",
+      "adaptiveIcon": {
+        "backgroundColor": "#071015"
+      }
+    },
+    "plugins": []
+  }
+}
+
