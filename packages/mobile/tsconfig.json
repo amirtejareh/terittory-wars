@@ -10,7 +10,7 @@
     "baseUrl": ".",
     "paths": {
       "@territory-wars/game-engine": [
-        "../game-engine/src/index.ts"
+        "../game-engine/src/index.native.ts"
       ]
     }
   },
