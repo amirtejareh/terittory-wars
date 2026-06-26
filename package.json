@@ -14,6 +14,7 @@
     "dev:telegram": "npm --workspace @territory-wars/telegram run dev",
     "dev:server": "npm --workspace @territory-wars/server run dev",
     "build": "npm run build --workspaces --if-present",
+    "build:vercel": "npm run build --workspace @territory-wars/telegram && npm run build --workspace @territory-wars/server && node scripts/prepare-vercel-output.mjs",
     "typecheck": "npm run typecheck --workspaces --if-present",
     "test": "npm run test --workspaces --if-present",
     "ci": "npm run typecheck && npm run test && npm run build"
@@ -24,4 +25,3 @@
     "vitest": "^4.1.9"
   }
 }
-

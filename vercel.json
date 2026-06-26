@@ -1,7 +1,7 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "buildCommand": "npm run build --workspace @territory-wars/telegram && npm run build --workspace @territory-wars/server",
-  "outputDirectory": "packages/telegram/dist",
+  "buildCommand": "npm run build:vercel",
+  "outputDirectory": "dist",
   "functions": {
     "api/index.ts": {
       "runtime": "nodejs22.x"
@@ -14,4 +14,3 @@
     }
   ]
 }
-
