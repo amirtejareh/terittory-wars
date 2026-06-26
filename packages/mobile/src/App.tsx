@@ -11,10 +11,25 @@ import {
   type Position
 } from "@territory-wars/game-engine";
 import { BattleArtwork } from "./components/BattleArtwork";
+import { fetchBattleBootstrap } from "./api";
 
 export default function App() {
   const [game, setGame] = useState<GameState>(() => createInitialGame());
   const [selected, setSelected] = useState<Position | undefined>();
+
+  useEffect(() => {
+    let cancelled = false;
+
+    void fetchBattleBootstrap().then((nextGame) => {
+      if (!cancelled && nextGame) {
+        setGame(nextGame);
+      }
+    });
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   useEffect(() => {
     if (game.currentPlayer !== "red" || game.winner) {

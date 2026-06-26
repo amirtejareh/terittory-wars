@@ -1,4 +1,5 @@
 export * from "./ai.ts";
+export * from "./battleView.ts";
 export * from "./board.ts";
 export * from "./constants.ts";
 export * from "./rewards.ts";

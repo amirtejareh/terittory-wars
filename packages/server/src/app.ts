@@ -1,5 +1,5 @@
 import { randomUUID } from "node:crypto";
-import { applyAction, calculateMatchReward, createInitialGame, evaluateWinner, type GameAction } from "@territory-wars/game-engine";
+import { applyAction, calculateMatchReward, createBattleViewSnapshot, createInitialGame, evaluateWinner, type GameAction } from "@territory-wars/game-engine";
 import { catalog, getCatalogItem } from "./catalog.js";
 import { getUser, grantCatalogItem, upsertUser } from "./store.js";
 import {
@@ -53,6 +53,21 @@ export async function handleApiRequest(request: ApiRequest): Promise<ApiResponse
       return json(200, { items: catalog });
     }
 
+    if ((request.method === "GET" || request.method === "POST") && path === "/battle/bootstrap") {
+      const { initData, username } = readBody<{ initData?: string; username?: string }>(request.body);
+      const session = initData ? resolveSession(initData) : undefined;
+      const blueName = session?.user.username ?? session?.user.first_name ?? username ?? "Amir";
+      const game = createInitialGame({ blueName });
+
+      return json(200, {
+        game,
+        snapshot: createBattleViewSnapshot(game),
+        assets: {
+          battleBackground: "battle-empty"
+        }
+      });
+    }
+
     if (request.method === "POST" && path === "/shop/invoice") {
       const { initData, itemId } = readBody<{ initData?: string; itemId?: string }>(request.body);
       const item = itemId ? getCatalogItem(itemId) : undefined;
@@ -104,7 +119,7 @@ export async function handleApiRequest(request: ApiRequest): Promise<ApiResponse
       });
     }
 
-    if (request.method === "POST" && path === "/telegram/webhook") {
+    if (request.method === "POST" && (path === "/telegram/webhook" || path === "/webhook")) {
       return handleTelegramWebhook(request);
     }
 

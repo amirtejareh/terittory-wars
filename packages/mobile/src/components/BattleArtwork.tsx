@@ -1,32 +1,8 @@
-import type { GameState, Position, Tile } from "@territory-wars/game-engine";
+import { BATTLE_ARTWORK_RECTS, BATTLE_ARTWORK_SIZE, type GameState, type Position, type Tile } from "@territory-wars/game-engine";
 import { ImageBackground, Pressable, StyleSheet, View, type LayoutChangeEvent, type ImageSourcePropType } from "react-native";
 import { useMemo, useState } from "react";
 
 const emptyBattleArtwork = require("../../assets/boards/battle-empty.png") as ImageSourcePropType;
-
-const ARTWORK_WIDTH = 1024;
-const ARTWORK_HEIGHT = 1536;
-
-const BOARD_RECT = {
-  x: 38,
-  y: 316,
-  width: 948,
-  height: 838
-};
-
-const ABILITY_RECT = {
-  x: 408,
-  y: 1082,
-  width: 220,
-  height: 270
-};
-
-const END_TURN_RECT = {
-  x: 682,
-  y: 1190,
-  width: 318,
-  height: 128
-};
 
 interface BattleArtworkProps {
   readonly game: GameState;
@@ -75,8 +51,8 @@ export function BattleArtwork({ game, selected, onAbilityPress, onEndTurnPress, 
               <View pointerEvents="none" style={getTileOverlayStyle(tile, selected)} />
             </Pressable>
           ))}
-          <Pressable accessibilityRole="button" accessibilityLabel="Hero ability" style={[styles.hotspot, getMappedStyle(ABILITY_RECT, imageFrame)]} onPress={onAbilityPress} />
-          <Pressable accessibilityRole="button" accessibilityLabel="End turn" style={[styles.hotspot, getMappedStyle(END_TURN_RECT, imageFrame)]} onPress={onEndTurnPress} />
+          <Pressable accessibilityRole="button" accessibilityLabel="Hero ability" style={[styles.hotspot, getMappedStyle(BATTLE_ARTWORK_RECTS.ability, imageFrame)]} onPress={onAbilityPress} />
+          <Pressable accessibilityRole="button" accessibilityLabel="End turn" style={[styles.hotspot, getMappedStyle(BATTLE_ARTWORK_RECTS.endTurn, imageFrame)]} onPress={onEndTurnPress} />
         </>
       ) : null}
     </View>
@@ -84,9 +60,9 @@ export function BattleArtwork({ game, selected, onAbilityPress, onEndTurnPress, 
 }
 
 function getContainFrame(layout: LayoutSize) {
-  const scale = Math.min(layout.width / ARTWORK_WIDTH, layout.height / ARTWORK_HEIGHT);
-  const width = ARTWORK_WIDTH * scale;
-  const height = ARTWORK_HEIGHT * scale;
+  const scale = Math.min(layout.width / BATTLE_ARTWORK_SIZE.width, layout.height / BATTLE_ARTWORK_SIZE.height);
+  const width = BATTLE_ARTWORK_SIZE.width * scale;
+  const height = BATTLE_ARTWORK_SIZE.height * scale;
 
   return {
     scale,
@@ -105,13 +81,13 @@ function getMappedStyle(rect: ArtworkRect, imageFrame: ReturnType<typeof getCont
 }
 
 function getTileStyle(position: Position, imageFrame: ReturnType<typeof getContainFrame>) {
-  const cellWidth = BOARD_RECT.width / 6;
-  const cellHeight = BOARD_RECT.height / 6;
+  const cellWidth = BATTLE_ARTWORK_RECTS.board.width / 6;
+  const cellHeight = BATTLE_ARTWORK_RECTS.board.height / 6;
 
   return getMappedStyle(
     {
-      x: BOARD_RECT.x + position.x * cellWidth,
-      y: BOARD_RECT.y + position.y * cellHeight,
+      x: BATTLE_ARTWORK_RECTS.board.x + position.x * cellWidth,
+      y: BATTLE_ARTWORK_RECTS.board.y + position.y * cellHeight,
       width: cellWidth,
       height: cellHeight
     },

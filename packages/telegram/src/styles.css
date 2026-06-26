@@ -14,9 +14,7 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
-  background:
-    radial-gradient(circle at 50% 0%, rgba(243, 193, 90, 0.18), transparent 24rem),
-    linear-gradient(180deg, #071015 0%, #0c1618 100%);
+  background: #05090c;
 }
 
 button {
@@ -27,140 +25,73 @@ button {
 .app-shell {
   position: relative;
   display: grid;
-  grid-template-rows: auto minmax(320px, 1fr) auto auto;
-  gap: 12px;
+  place-items: center;
   min-height: 100vh;
-  max-width: 760px;
-  margin: 0 auto;
-  padding: max(14px, env(safe-area-inset-top)) 14px max(10px, env(safe-area-inset-bottom));
-}
-
-.top-hud {
-  display: grid;
-  grid-template-columns: 1fr minmax(112px, 140px) 1fr;
-  gap: 8px;
-  align-items: end;
-}
-
-.player-panel,
-.crest,
-.square-action,
-.end-turn {
-  border: 1px solid #b9802d;
-  background: rgba(9, 15, 18, 0.9);
-}
-
-.player-panel {
-  min-height: 78px;
-  padding: 10px;
-  display: grid;
-  align-content: center;
-  gap: 5px;
-}
-
-.player-panel.blue {
-  border-color: #2b87c6;
-}
-
-.player-panel.red {
-  border-color: #c44134;
-}
-
-.player-panel strong {
   overflow: hidden;
-  color: #f5efe4;
-  font-size: 18px;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }
 
-.player-panel span,
-.crest span,
-.end-turn span {
-  color: #d8c49d;
-  font-size: 12px;
-}
-
-.crest {
-  min-height: 96px;
+.battle-art-screen {
+  width: 100vw;
+  height: 100vh;
   display: grid;
   place-items: center;
-  padding: 9px 8px;
-  text-align: center;
 }
 
-.crest strong {
-  color: #f3c15a;
-  font-size: 13px;
+.battle-art-frame {
+  position: relative;
+  width: min(100vw, calc(100vh * 0.6666667));
+  height: min(100vh, calc(100vw * 1.5));
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
-.crest b {
-  color: #fffdf7;
-  font-size: 24px;
+.battle-tile-button,
+.battle-hotspot {
+  position: absolute;
+  padding: 0;
+  border: 0;
+  background: transparent;
 }
 
-.pixi-board {
-  width: 100%;
-  aspect-ratio: 1;
-  min-height: 320px;
-  border: 2px solid #c18a34;
-  background: #10171a;
-  overflow: hidden;
-}
-
-.pixi-board canvas {
+.battle-tile-overlay {
+  display: block;
   width: 100%;
   height: 100%;
-  display: block;
+  border: 1px solid transparent;
 }
 
-.bottom-actions {
-  display: grid;
-  grid-template-columns: minmax(76px, 110px) minmax(76px, 110px) 1fr;
-  gap: 12px;
-  min-height: 96px;
+.battle-tile-overlay.blue {
+  background: rgba(0, 149, 255, 0.18);
+  border-color: rgba(98, 208, 255, 0.45);
 }
 
-.square-action,
-.end-turn {
-  color: #fff6dc;
-  font-weight: 900;
+.battle-tile-overlay.red {
+  background: rgba(255, 42, 28, 0.16);
+  border-color: rgba(255, 94, 82, 0.45);
 }
 
-.square-action {
-  min-width: 0;
+.battle-tile-overlay.selected {
+  background: rgba(255, 194, 63, 0.24);
+  border: 2px solid rgba(255, 224, 115, 0.9);
+}
+
+.battle-tile-overlay.contested {
+  background: rgba(255, 194, 63, 0.14);
+  border-color: rgba(255, 224, 115, 0.55);
+}
+
+.stars-test-button {
+  position: fixed;
+  right: 10px;
+  top: max(10px, env(safe-area-inset-top));
+  min-width: 68px;
+  min-height: 36px;
+  border: 1px solid rgba(243, 193, 90, 0.75);
+  background: rgba(5, 9, 12, 0.72);
   color: #f3c15a;
-}
-
-.end-turn {
-  display: grid;
-  place-items: center;
-  min-width: 0;
-  border-width: 2px;
-  border-color: #f5a623;
-  background: #4f2509;
-  box-shadow: 0 0 24px rgba(245, 166, 35, 0.35);
-}
-
-.nav-row {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  min-height: 56px;
-  border-top: 1px solid #67441a;
-}
-
-.nav-row span {
-  display: grid;
-  place-items: center;
-  min-width: 0;
-  color: #b99a6d;
   font-size: 11px;
   font-weight: 900;
-}
-
-.nav-row .active {
-  color: #ffffff;
-  background: #0b3550;
 }
 
 .result-banner {
@@ -179,16 +110,8 @@ button {
 }
 
 @media (max-width: 410px) {
-  .top-hud {
-    grid-template-columns: 1fr 116px 1fr;
-  }
-
-  .player-panel strong {
-    font-size: 15px;
-  }
-
-  .bottom-actions {
-    grid-template-columns: 82px 82px 1fr;
+  .stars-test-button {
+    right: 6px;
+    min-width: 56px;
   }
 }
-
